@@ -12,7 +12,7 @@
         <result column="hire_time" property="hireTime" jdbcType="DATE"/>
         <result column="role_id" property="roleId" jdbcType="INTEGER"/>
         <result column="province" property="province" jdbcType="VARCHAR"/>
-        <result column="idcard" property="idcard" jdbcType="INTEGER"/>
+        <result column="idcard" property="idcard" jdbcType="VARCHAR"/>
         <result column="birthday" property="birthday" jdbcType="DATE"/>
         <result column="tel" property="tel" jdbcType="VARCHAR"/>
         <result column="email" property="email" jdbcType="VARCHAR"/>

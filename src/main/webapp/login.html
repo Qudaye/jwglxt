@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>用户登录</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -33,23 +33,21 @@
 										</h4>
 
 										<div class="space-6"></div>
-										<form action="index.html" method="post" onsubmit="return check()">
+										<form th:action="@{/login}" method="post" onsubmit="return check()">
 											<fieldset>
 												<label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input id="userId"
-														name="userId" type="text" class="form-control"
+													class="block input-icon input-icon-right"> <input id="username"
+														name="username" type="text" class="form-control"
 														placeholder="请输入账号" /> <i class="icon-user"></i>
 												</span>
 												</label> <label class="block clearfix"> <span
-													class="block input-icon input-icon-right"> <input id="userPw"
-														name="passWord" type="password" class="form-control"
+													class="block input-icon input-icon-right"> <input id="password"
+														name="password" type="password" class="form-control"
 														placeholder="请输入密码" /> <i class="icon-lock"></i>
 												</span>
 												</label>
 
 												<div class="clearfix">
-											
-
 													<button type="submit"
 														class="width-35 pull-right btn btn-sm btn-primary">
 														<i class="icon-key"></i> 登陆

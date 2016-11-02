@@ -15,4 +15,10 @@
         id, parent_id, name, url, remark
     </sql>
 
+    <select id="getByRoleId" parameterType="java.lang.Integer" >
+        select <include refid="Base_Column_List" />
+        from authority a join role_authority ra on a.id = ra.authority_id
+        where role_id = #{roleId}
+    </select>
+
 </mapper>

@@ -1,6 +1,7 @@
 package f4.web.service;
 
 import com.github.pagehelper.PageInfo;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.List;
@@ -44,6 +45,13 @@ public interface BaseService<T, ID extends Serializable> {
      * @return 所有记录
      */
     List<T> selectAll();
+
+    /**
+     * Example查询
+     *
+     * @return 满足条件的记录
+     */
+    List<T> selectByExample(Example example);
 
     /**
      * 根据实体更新记录

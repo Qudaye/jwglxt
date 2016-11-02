@@ -1,37 +1,38 @@
 package f4.web.config;
 
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.Filter;
 
 /**
+ * WebApp init
+ *
  * Created by xuan on 16-10-28.
  */
-public class WebAppInitializer extends AbstractDispatcherServletInitializer {
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-    protected WebApplicationContext createServletApplicationContext() {
-        final AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        context.register(AppConfig.class);
-        context.register(WebMvcConfig.class);
-        return context;
-    }
-
-    protected WebApplicationContext createRootApplicationContext() {
-        return null;
-    }
-
+    @Override
     protected String[] getServletMappings() {
-        return new String[] { "/" };
+        return new String[]{"/"};
+    }
+
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class<?>[]{AppConfig.class, WebSecurityConfig.class};
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class<?>[]{WebMvcConfig.class};
     }
 
     @Override
     protected Filter[] getServletFilters() {
         final CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+        encodingFilter.setEncoding(WebMvcConfig.CHARACTER_ENCODING);
         encodingFilter.setForceEncoding(true);
-        return new Filter[] { encodingFilter };
+        return new Filter[]{encodingFilter};
     }
 
 }

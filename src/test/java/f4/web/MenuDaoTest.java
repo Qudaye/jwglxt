@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import tk.mybatis.mapper.entity.Example;
 
 /**
  * Created by xuan on 16-10-28.
@@ -22,10 +23,10 @@ public class MenuDaoTest {
     @Autowired
     private MenuDao menuDao;
 
-    @Test
-    public void selectAll() {
-        menuDao.selectAll().forEach(menu -> log.debug(menu));
-    }
+//    @Test
+//    public void selectAll() {
+//        menuDao.selectAll().forEach(menu -> log.debug(menu));
+//    }
 
     public void insert() {
         Menu menu = new Menu();
@@ -34,6 +35,15 @@ public class MenuDaoTest {
         menu.setLevel("1.3");
         menuDao.insert(menu);
         System.out.println(menu.getId());
+    }
+
+    @Test
+    public void selectLike() {
+        Example example = new Example(Menu.class);
+        example.createCriteria().andLike("menuName", "%o%");
+        for (Menu menu : menuDao.selectByExample(example)) {
+            System.out.println(menu.getMenuName());
+        }
     }
 
 }

@@ -5,8 +5,8 @@
 
     <resultMap id="BaseResultMap" type="email">
         <id column="id" property="id" jdbcType="INTEGER"/>
-        <result column="form" property="form" jdbcType="VARCHAR"/>
-        <result column="to" property="to" jdbcType="VARCHAR"/>
+        <result column="send" property="send" jdbcType="VARCHAR"/>
+        <result column="receive" property="receive" jdbcType="VARCHAR"/>
         <result column="time" property="time" jdbcType="DATE"/>
         <result column="receive_address" property="receiveAddress" jdbcType="VARCHAR"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
@@ -14,7 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, form, to, time, receive_address, title, content
+        id, send, receive, time, receive_address, title, content
     </sql>
 
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.common.Mapper;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.Serializable;
 import java.util.List;
@@ -48,6 +49,12 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
     @Transactional(readOnly = true)
     public List<T> selectAll() {
         return mapper.selectAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<T> selectByExample(Example example) {
+        return mapper.selectByExample(example);
     }
 
     @Override

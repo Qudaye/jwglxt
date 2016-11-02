@@ -20,7 +20,7 @@
         <result column="city" property="city" jdbcType="VARCHAR"/>
         <result column="status" property="status" jdbcType="VARCHAR"/>
         <result column="description" property="description" jdbcType="VARCHAR"/>
-        <result column="parent_phone" property="parentPhone" jdbcType="INTEGER"/>
+        <result column="parent_phone" property="parentPhone" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

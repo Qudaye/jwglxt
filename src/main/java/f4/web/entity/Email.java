@@ -12,10 +12,10 @@ public class Email implements Serializable {
     private Integer id;
 
     @Column
-    private String form;
+    private String send;
 
     @Column
-    private String to;
+    private String receive;
 
     @Column
     private Date time;
@@ -37,20 +37,20 @@ public class Email implements Serializable {
         this.id = id;
     }
 
-    public String getForm() {
-        return form;
+    public String getSend() {
+        return send;
     }
 
-    public void setForm(String form) {
-        this.form = form == null ? null : form.trim();
+    public void setSend(String send) {
+        this.send = send;
     }
 
-    public String getTo() {
-        return to;
+    public String getReceive() {
+        return receive;
     }
 
-    public void setTo(String to) {
-        this.to = to == null ? null : to.trim();
+    public void setReceive(String receive) {
+        this.receive = receive;
     }
 
     public Date getTime() {

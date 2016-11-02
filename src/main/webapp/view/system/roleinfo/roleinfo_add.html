@@ -29,7 +29,7 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">角色编号</label>
                 <div class="col-sm-9">
-                	<input type="text" name="" class="form-control input-sm" placeholder="请输入角色编号"/>
+                	<input type="text" name="" class="form-control input-sm" disabled placeholder="请输入角色编号"/>
                 </div>
             </div>
         
@@ -38,7 +38,7 @@
             <div class="form-group">
             	<label class="col-sm-3 control-label">角色名称</label>
                 <div class="col-sm-9">
-                	<input type="text" name="" class="form-control input-sm" placeholder="请输入角色名称"/>
+                	<input type="text" name="" class="form-control input-sm input-name" placeholder="请输入角色名称"/>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
         	<div class="form-group">
             	<label class="col-sm-3 control-label">备注</label>
                 <div class="col-sm-9">
-                	<textarea class="form-control"></textarea>
+                	<textarea class="form-control input-description"></textarea>
                 </div>
             </div>
         
@@ -60,11 +60,33 @@
  
    	<div class="row">
     	<div class="col-sm-3 col-sm-offset-4">
-        	<input  type="submit" class="btn btn-success" value="保存"/>
+        	<input  type="submit" class="btn btn-success btn-save" value="保存"/>
             <input  type="reset" class="btn  btn-danger" value="取消"/>
         </div>
     </div>
 </form>
-
+<script>
+  addRole();
+  //添加角色
+  function addRole(){
+    $(".btn-save").on("click", function (e) {
+      e.preventDefault();
+      var name =$(".input-name").val();
+      var description = $(".input-description").val();
+      $.ajax({
+        url:"/role",
+        type:"POST",
+        contentType:'application/json',
+        data:JSON.stringify({
+          name:name,
+          description:description
+        }),
+        success:function(data){
+          console.log(data);
+        }
+      });
+    });
+  }
+</script>
 </body>
 </html>

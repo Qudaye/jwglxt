@@ -1,17 +1,12 @@
 package f4.web.controller;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import f4.web.entity.Attendance;
 import f4.web.service.AttendanceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class AttendanceController {
@@ -65,7 +60,7 @@ public class AttendanceController {
     }
 
     /**
-     * 修改
+     * 修改.
      *
      * @param attendance
      * @return
@@ -76,7 +71,7 @@ public class AttendanceController {
     }
 
     /**
-     * 删除
+     * 删除.
      *
      * @param id
      * @return

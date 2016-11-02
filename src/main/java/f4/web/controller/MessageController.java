@@ -42,6 +42,16 @@ public class MessageController {
     	message.setId(id);
         return messageService.selectOne(message);
     }
+
+    /**
+     * message send Page
+     *
+     * @return
+     */
+    @RequestMapping(value = "/message/send", method = RequestMethod.GET)
+    public String sendPage() {
+        return "marketactive/messafeinfo/messafeinfo_send";
+    }
     
     /**
      * 查询记录

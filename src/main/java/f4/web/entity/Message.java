@@ -12,16 +12,16 @@ public class Message implements Serializable {
     private Integer id;
 
     @Column
-    private String from;
+    private String send;
 
     @Column
     private Date time;
 
     @Column
-    private String to;
+    private String receive;
 
     @Column
-    private Integer phone;
+    private String phone;
 
     @Column
     private String content;
@@ -34,12 +34,12 @@ public class Message implements Serializable {
         this.id = id;
     }
 
-    public String getFrom() {
-        return from;
+    public String getSend() {
+        return send;
     }
 
-    public void setFrom(String from) {
-        this.from = from == null ? null : from.trim();
+    public void setSend(String send) {
+        this.send = send;
     }
 
     public Date getTime() {
@@ -50,19 +50,19 @@ public class Message implements Serializable {
         this.time = time;
     }
 
-    public String getTo() {
-        return to;
+    public String getReceive() {
+        return receive;
     }
 
-    public void setTo(String to) {
-        this.to = to == null ? null : to.trim();
+    public void setReceive(String receive) {
+        this.receive = receive;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

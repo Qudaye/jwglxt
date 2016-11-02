@@ -52,7 +52,8 @@ public class AppConfig implements EnvironmentAware {
     /**
      * mybatis sqlSessionFactory
      *
-     * @return
+     * @throws Exception
+     * @return SqlSessionFactory
      */
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {

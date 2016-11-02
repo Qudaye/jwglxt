@@ -36,7 +36,7 @@ public class Staff implements Serializable {
     private String province;
 
     @Column
-    private Integer idcard;
+    private String idcard;
 
     @Column
     private Date birthday;
@@ -134,11 +134,11 @@ public class Staff implements Serializable {
         this.province = province == null ? null : province.trim();
     }
 
-    public Integer getIdcard() {
+    public String getIdcard() {
         return idcard;
     }
 
-    public void setIdcard(Integer idcard) {
+    public void setIdcard(String idcard) {
         this.idcard = idcard;
     }
 

@@ -57,7 +57,7 @@ public class Student implements Serializable {
     private String description;
 
     @Column
-    private Integer parentPhone;
+    private String parentPhone;
 
     public Integer getId() {
         return id;
@@ -187,11 +187,11 @@ public class Student implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getParentPhone() {
+    public String getParentPhone() {
         return parentPhone;
     }
 
-    public void setParentPhone(Integer parentPhone) {
+    public void setParentPhone(String parentPhone) {
         this.parentPhone = parentPhone;
     }
 }

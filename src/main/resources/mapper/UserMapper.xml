@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="f4.web.dao.UserDao">
+
+    <resultMap id="BaseResultMap" type="user">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <id column="username" property="username" jdbcType="VARCHAR"/>
+        <id column="password" property="password" jdbcType="VARCHAR"/>
+        <id column="role_id" property="roleId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, username, password, role_id
+    </sql>
+
+    <!-- 根据用户名查询 -->
+    <select id="getByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List" />
+        from (
+            select <include refid="Base_Column_List" />
+            from staff
+            union
+            select <include refid="Base_Column_List" />
+            from teacher
+        ) as user_table
+        where username = #{username}
+    </select>
+
+</mapper>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +53,21 @@ public class DictionaryController {
     @RequestMapping(value = "/dictionary", method = RequestMethod.GET)
     public @ResponseBody Dictionary selectOne(@RequestBody Dictionary dictionary) {
     	return dictionaryService.selectOne(dictionary);
+    }
+
+    /**
+     * update Page
+     *
+     * @param id
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/dictionary/{id}/update", method = RequestMethod.GET)
+    public String updatePage(@PathVariable Integer id, ModelMap modelMap) {
+        Dictionary dictionary = new Dictionary();
+        dictionary.setId(id);
+        modelMap.addAttribute("dictionary", dictionaryService.selectOne(dictionary));
+        return "system/datadictionary/datadictionary_update";
     }
 
     /**

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
     <title>首页</title>
@@ -65,7 +65,7 @@
 
                         <li class="divider"></li>
 
-                        <li><a href="login.html"> <i class="icon-off"></i> 退出
+                        <li><a th:href="@{/logout}" href="/logout"> <i class="icon-off"></i> 退出
                         </a></li>
                     </ul>
                 </li>

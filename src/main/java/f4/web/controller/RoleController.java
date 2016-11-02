@@ -1,10 +1,13 @@
 package f4.web.controller;
 
 import f4.web.entity.Role;
+import f4.web.entity.Staff;
 import f4.web.service.RoleService;
 
+import f4.web.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,9 @@ import java.util.List;
  */
 @Controller
 public class RoleController {
+
+    @Autowired
+    private StaffService staffService;
 
     @Autowired
     private RoleService roleService;
@@ -46,6 +52,21 @@ public class RoleController {
     	Role role = new Role();
     	role.setId(id);
         return roleService.selectOne(role);
+    }
+
+    /**
+     * update page
+     *
+     * @param id
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/role/{id}/update", method = RequestMethod.GET)
+    public String updatePage(@PathVariable Integer id, ModelMap modelMap) {
+        Role role = new Role();
+        role.setId(id);
+        modelMap.addAttribute("role", roleService.selectOne(role));
+        return "/system/roleinfo/roleinfo_update";
     }
     
     /**
@@ -90,5 +111,22 @@ public class RoleController {
     @RequestMapping(value = "/role/{id}", method = RequestMethod.DELETE)
     public @ResponseBody int deleteById(@PathVariable Integer id) {
         return roleService.deleteById(id);
+    }
+
+    /**
+     * 用户角色变更
+     *
+     * @param staffId
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping(value = "/roleChange/{staffId}", method = RequestMethod.GET)
+    public String roleChange(@PathVariable Integer staffId, ModelMap modelMap) {
+        Staff staff = new Staff();
+        staff.setId(staffId);
+        Staff staffP = staffService.selectOne(staff);
+        modelMap.addAttribute("staff", staffP);
+        modelMap.addAttribute("roles", roleService.selectAll());
+        return "system/roleinfo/role_change";
     }
 }
